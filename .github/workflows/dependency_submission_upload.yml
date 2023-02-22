@@ -1,0 +1,22 @@
+name: Upload Maven Transitive Dependencies
+on: workflow_dispatch
+
+jobs:
+  build_publish:
+    name: Upload Maven Transitive Dependencies
+
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: 11
+        java-package: jdk
+        distribution: microsoft
+
+    - name: Submit Dependency Snapshot
+      uses: advanced-security/maven-dependency-submission-action@v1
