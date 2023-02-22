@@ -19,7 +19,7 @@ jobs:
 
       - name: Dependency validation
         id: dependency_validation
-        uses: actions/dependency-review-action@v2
+        uses: actions/dependency-review-action@v3
         continue-on-error: true
 
       - name: Publish failure validation status
