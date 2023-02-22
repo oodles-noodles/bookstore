@@ -24,7 +24,7 @@ jobs:
 
       - name: Publish failure validation status
         if: steps.dependency_validation.outcome == 'failure'
-        uses: octodemo/github-status-action@v2
+        uses: octodemo/github-status-action@v3
         with:
           authToken: ${{ secrets.GITHUB_TOKEN }}
           state: failure
