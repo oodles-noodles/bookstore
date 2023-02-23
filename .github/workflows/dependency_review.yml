@@ -11,4 +11,3 @@ jobs:
       java-version: 11
       java-package: jdk
       java-distribution: microsoft
-      snapshot-dependency-file-name: pom-snapshot.xml
