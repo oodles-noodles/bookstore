@@ -19,4 +19,4 @@ jobs:
         distribution: microsoft
 
     - name: Submit Dependency Snapshot
-      uses: advanced-security/maven-dependency-submission-action@v1
+      uses: advanced-security/maven-dependency-submission-action@v3
