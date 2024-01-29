@@ -18,27 +18,32 @@ jobs:
       - name: Checkout Source
         uses: actions/checkout@v3
 
-      - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          java-version: 11
-          java-package: jdk
-          distribution: microsoft
-          # Using the integrated cache functionality to speed up builds
-          cache: maven
+      - name: Print GitHub Repo Properties
+        env:
+          REPO_PROPERTIES: ${{ toJson(github.event.repository.custom_properties) }}
+        run: |
+          echo $REPO_PROPERTIES
+      # - name: Set up JDK
+      #   uses: actions/setup-java@v3
+      #   with:
+      #     java-version: 11
+      #     java-package: jdk
+      #     distribution: microsoft
+      #     # Using the integrated cache functionality to speed up builds
+      #     cache: maven
 
-      - name: Initialize CodeQL Scanning
-        uses: github/codeql-action/init@v2
-        with:
-          #config-file: ./.github/codeql/codeql-config.yml
-          queries: security-extended
-          packs: +codeql/java-queries:experimental/Security/CWE/CWE-020/Log4jJndiInjection.ql
-          languages: java
+      # - name: Initialize CodeQL Scanning
+      #   uses: github/codeql-action/init@v2
+      #   with:
+      #     #config-file: ./.github/codeql/codeql-config.yml
+      #     queries: security-extended
+      #     packs: +codeql/java-queries:experimental/Security/CWE/CWE-020/Log4jJndiInjection.ql
+      #     languages: java
 
-      # We are using a custom build step to have greater control over the build process over using autobuild
-      - name: Custom Build Step
-        run: mvn compile -B
-        shell: bash
+      # # We are using a custom build step to have greater control over the build process over using autobuild
+      # - name: Custom Build Step
+      #   run: mvn compile -B
+      #   shell: bash
 
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v2
+      # - name: Perform CodeQL Analysis
+      #   uses: github/codeql-action/analyze@v2
