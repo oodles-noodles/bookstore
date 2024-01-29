@@ -14,6 +14,6 @@ jobs:
     with:
       queries: ${{ github.event.repository.custom_properties.codeql-query-suite }}
       languages: ${{ github.event.repository.custom_properties.codeql-languages }}
-      # buildCmd: mvn compile -B
-      # java-version: 11
-      # java-distribution: microsoft
+      buildCmd: mvn compile -B
+      java-version: 11
+      java-distribution: microsoft
