@@ -2,7 +2,7 @@ name: Code scanning
 on:
   push:
     branches:
-      - '**'
+      - main
       - '!dependabot/**'
   pull_request:
     branches:
@@ -12,8 +12,6 @@ jobs:
   codeql:
     uses: expert-services/reusable-workflows/.github/workflows/codeql.yml@main
     with:
-      # queries: ${{ github.event.repository.custom_properties.codeql-query-suite }}
-      # languages: ${{ github.event.repository.custom_properties.codeql-languages }}
       buildCmd: mvn compile -B
       java-version: 11
       java-distribution: microsoft
