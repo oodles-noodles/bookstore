@@ -6,6 +6,11 @@ jobs:
     name: Upload Maven Transitive Dependencies
 
     runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        include:
+          - java-version: 8
+            pom-file: 'pom-java8.xml'
 
     steps:
     - name: Checkout
@@ -20,5 +25,5 @@ jobs:
 
     - name: Submit Dependency Snapshot
       uses: david-wiggs/maven-dependency-submission-action@unique-job-matrix
-      # with:
-      #   matrix-identifier: testing
+      with:
+        correlator: ${{ matrix.pom-file }}
