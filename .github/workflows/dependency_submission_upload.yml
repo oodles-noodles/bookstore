@@ -19,6 +19,6 @@ jobs:
         distribution: microsoft
 
     - name: Submit Dependency Snapshot
-      uses: david-wiggs/maven-dependency-submission-action@unique-matrix-identifier
+      uses: david-wiggs/maven-dependency-submission-action@unique-job-matrix
       with:
         matrix-identifier: testing
