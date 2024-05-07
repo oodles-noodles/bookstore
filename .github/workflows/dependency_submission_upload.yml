@@ -20,5 +20,5 @@ jobs:
 
     - name: Submit Dependency Snapshot
       uses: david-wiggs/maven-dependency-submission-action@unique-job-matrix
-      with:
-        matrix-identifier: testing
+      # with:
+      #   matrix-identifier: testing
