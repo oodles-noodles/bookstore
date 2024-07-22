@@ -1,12 +1,25 @@
 name: Dependency Review
 
-on:
-  pull_request:
+on: 
   workflow_dispatch:
+  pull_request:
+    branches:
+      - main
 jobs:
-  dependency_review:
-    uses: oodles-noodles/reusable-workflows/.github/workflows/dependency_review.yml@main
+  maven_dependency_analysis:
+    name: Maven
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - java-version: 11
+            java-distribution: microsoft
+            directory: dir
+    permissions:
+      contents: write
+      statuses: write
+    uses: expert-services/reusable-workflows/.github/workflows/dependency_review.yml@testing
     with:
-      ecosystem: maven
-      java-version: 11
-      java-distribution: microsoft
+      java-version: ${{ matrix.java-version }} 
+      java-distribution: ${{ matrix.java-distribution}} 
+      directory: ${{ matrix.directory }}
