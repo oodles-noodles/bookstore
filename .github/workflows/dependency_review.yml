@@ -14,7 +14,7 @@ jobs:
         include:
           - java-version: 11
             java-distribution: microsoft
-            directory: dir
+            directory: someDir
     permissions:
       contents: write
       statuses: write
