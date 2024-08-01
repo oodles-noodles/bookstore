@@ -15,9 +15,6 @@ jobs:
           - java-version: 11
             java-distribution: microsoft
             directory: .
-          - java-version: 11
-            java-distribution: microsoft
-            directory: dir
     permissions:
       contents: write
       statuses: write
